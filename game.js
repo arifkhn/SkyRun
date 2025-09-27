@@ -146,6 +146,26 @@ document.addEventListener('keydown', e => {
 });
 
 
+function checkCollision() {
+  for (let p of platforms) {
+    if (
+      Math.abs(player.position.x - p.position.x) < platformSize.width / 1.2 &&
+      Math.abs(player.position.z - p.position.z) < platformSize.depth / 2 &&
+      player.position.y <= 0.41
+    ) {
+      player.position.y = 0.4;
+      velocityY = 0;
+      isJumping = false;
+      return true;
+    }
+  }
+  return false;
+}
+
+
+
+
+// Mobile swipe controls
 let touchStartX = 0, touchStartY = 0;
 let touchEndX = 0, touchEndY = 0;
 
@@ -172,8 +192,6 @@ function handleSwipe() {
   }
 }
 
-
-
 document.addEventListener("touchstart", e => {
   touchStartX = e.changedTouches[0].screenX;
   touchStartY = e.changedTouches[0].screenY;
@@ -188,21 +206,6 @@ document.addEventListener("touchend", e => {
 
 
 
-function checkCollision() {
-  for (let p of platforms) {
-    if (
-      Math.abs(player.position.x - p.position.x) < platformSize.width / 1.2 &&
-      Math.abs(player.position.z - p.position.z) < platformSize.depth / 2 &&
-      player.position.y <= 0.41
-    ) {
-      player.position.y = 0.4;
-      velocityY = 0;
-      isJumping = false;
-      return true;
-    }
-  }
-  return false;
-}
 
 function animate() {
   if (gameOver) return;
