@@ -3,7 +3,7 @@ let ballTex, blockTex, skyboxTex, bumpTex;
 let player, shadow, platforms = [];
 let targetX = 0;
 
-let platformSpeed = 0.08;
+let platformSpeed = 0.04;
 let gravity = -0.01;
 let velocityY = 0;
 let isJumping = false;
