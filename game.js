@@ -145,6 +145,35 @@ document.addEventListener('keydown', e => {
   }
 });
 
+
+let touchStartX = 0, touchStartY = 0;
+let touchEndX = 0, touchEndY = 0;
+
+function handleSwipe() {
+  const dx = touchEndX - touchStartX;
+  const dy = touchEndY - touchStartY;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    // Horizontal swipe
+    if (dx > 30) {
+      // Swipe Right
+      targetX += platformSize.width;
+    } else if (dx < -30) {
+      // Swipe Left
+      targetX -= platformSize.width;
+    }
+  } else {
+    // Vertical swipe
+    if (dy < -30 && !isJumping) {
+      // Swipe Up → Jump
+      velocityY = 0.2;
+      isJumping = true;
+    }
+  }
+}
+
+
+
 document.addEventListener("touchstart", e => {
   touchStartX = e.changedTouches[0].screenX;
   touchStartY = e.changedTouches[0].screenY;
