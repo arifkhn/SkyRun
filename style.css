@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: black;
+  font-family: sans-serif;
+  color: white;
+}
+
+canvas {
+  display: block;
+}
+
+#ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+#startScreen, #gameOverScreen {
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 20vh;
+  display: inline-block;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+#scoreBoard {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+}
